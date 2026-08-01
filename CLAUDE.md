@@ -86,9 +86,42 @@ Wild Orange, Cedarwood, Siberian Fir, Bergamot, Vetiver, Litsea, Cassia, Grapefr
 
 ---
 
+## File Structure
+
+```
+src/
+  data.js   ← ALL content lives here (oils, recipes, mood map, rhythm, care)
+  App.jsx   ← UI only — imports everything from data.js
+  App.css   ← All styles
+```
+
+### How to add a new oil
+Open `src/data.js` and add an entry to the `OILS` object:
+```js
+'Oil Name': { moods: ['calm','cozy',...], strength: 'medium', family: 'floral' },
+```
+- `strength`: `'medium'` (3 drops) | `'strong'` (2 drops) | `'very-strong'` (1 drop)
+- `family`: used to avoid duplicate scent families in a blend (e.g. `'citrus'`, `'woody'`, `'floral'`)
+- `moods`: used by the recommender to match user input
+
+### How to add a new recipe
+Open `src/data.js` and add an entry to the `RECIPES` array:
+```js
+{ name: 'Blend Name', desc: 'one-line vibe', oils: [{ name: 'Lavender', drops: 3 }, ...], tags: ['calm', 'floral'] },
+```
+- Valid tags: `calm` `citrus` `woody` `fresh` `focus` `sleep` `floral` `spicy`
+
+### How to add a mood keyword (recommender)
+Open `src/data.js` and add an entry to `MOOD_MAP`:
+```js
+keyword: ['mood1', 'mood2', ...],
+```
+
+---
+
 ## Tech Stack
 
 - Vite + React 19
 - No UI library — custom CSS only, keep it lightweight
 - `gh-pages` for deployment (`npm run deploy`)
-- No backend — all data is static JSON or JS constants
+- No backend — all data is static in `src/data.js`

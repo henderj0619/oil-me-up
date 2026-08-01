@@ -9,6 +9,15 @@
   --text-muted: #9B8F87;
   --border: #E8E2DA;
   --shadow: 0 2px 12px rgba(92,83,72,0.07);
+  --gradient: linear-gradient(135deg, #8A9E85 0%, #5C5348 100%);
+}
+
+/* Reusable gradient text */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 body {
@@ -28,16 +37,34 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 40px 0 28px;
+  padding: 40px 0 16px;
 }
 
 .hero h1 {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.9rem;
+  font-size: 2.2rem;
   font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--text);
-  margin-bottom: 20px;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #8A9E85 0%, #5C5348 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-style: italic;
+}
+
+.blend-search {
+  margin: 0 0 12px;
+}
+
+.filters {
+  margin-bottom: 16px;
 }
 
 .search {
@@ -86,9 +113,12 @@ body {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--text);
   margin-bottom: 16px;
   letter-spacing: 0.04em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* RECIPE CARDS */
@@ -144,12 +174,15 @@ body {
 .oil-name { color: var(--text); }
 
 .drops {
-  color: var(--sage);
   font-size: 0.8rem;
   font-weight: 500;
-  background: var(--sage-light);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   padding: 2px 8px;
   border-radius: 20px;
+  box-shadow: inset 0 0 0 1px #d4e0d2;
 }
 
 .tag-row {
@@ -169,7 +202,8 @@ body {
 
 /* DAILY RHYTHM CARDS */
 .rhythm-card {
-  border-top: 3px solid var(--sage);
+  border-top: 3px solid transparent;
+  border-image: var(--gradient) 1;
 }
 
 .time-label {
@@ -177,7 +211,10 @@ body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--sage);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .oils-inline {
@@ -187,8 +224,11 @@ body {
 
 .drops-inline {
   font-size: 0.82rem;
-  color: var(--sage);
   font-weight: 500;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .purpose {
@@ -221,7 +261,10 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--sage);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .care-instruction {
@@ -281,9 +324,11 @@ body {
 }
 
 .retry-btn {
-  background: none;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   border: none;
-  color: var(--sage);
   font-size: 0.85rem;
   cursor: pointer;
   padding: 0;
@@ -303,14 +348,31 @@ footer {
 }
 
 @media (max-width: 680px) {
-  .app { padding: 0 16px 60px; }
+  .app { padding: 0 12px 60px; }
 
-  .hero { padding: 28px 0 20px; }
-  .hero h1 { font-size: 1.4rem; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .hero { padding: 24px 0 12px; }
+  .hero h1 { font-size: 1.6rem; letter-spacing: 0.05em; }
+  .tagline { font-size: 0.8rem; }
 
-  .card-grid,
-  .card-grid.four-col,
+  .card-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-grid.four-col { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  .card { padding: 14px; gap: 8px; }
+  .card h3 { font-size: 1rem; }
+  .desc { font-size: 0.78rem; }
+  .oils li { font-size: 0.8rem; }
+  .drops { font-size: 0.72rem; padding: 2px 6px; }
+  .tag { font-size: 0.68rem; padding: 2px 7px; }
   .care-grid { grid-template-columns: 1fr; }
+
+  .card-grid.four-col .card {
+    padding: 14px;
+    gap: 6px;
+  }
+  .card-grid.four-col .time-label { font-size: 0.7rem; }
+  .card-grid.four-col .oils-inline { font-size: 0.8rem; }
+  .card-grid.four-col .drops-inline { font-size: 0.75rem; }
+  .card-grid.four-col .purpose { font-size: 0.75rem; }
 
   .rec-input-row { flex-direction: column; }
   .rec-btn { border-radius: 12px; }
